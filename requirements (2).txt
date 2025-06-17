@@ -1,0 +1,30 @@
+# Core dependencies
+streamlit>=1.28.0
+openai>=1.3.0
+
+# LlamaIndex dependencies
+llama-index>=0.9.0
+llama-index-embeddings-huggingface>=0.1.0
+llama-index-llms-openai>=0.1.0
+
+# Document processing
+pypdf>=3.17.0
+python-docx>=0.8.11
+python-pptx>=0.6.21
+docx2txt>=0.8
+pptx2txt>=0.1.0
+
+# ML and embeddings
+sentence-transformers>=2.2.2
+torch>=2.0.0
+transformers>=4.35.0,<4.50.0
+
+# Image processing (for PPTX)
+Pillow>=10.0.0
+
+# Unstructured document processing
+unstructured[docx,pptx]>=0.10.0
+
+# Additional utilities
+pathlib2>=2.3.7
+
