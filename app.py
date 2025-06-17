@@ -19,7 +19,7 @@ except ImportError:
 
 # Configuração da página
 st.set_page_config(
-    page_title="RAG Interativo - Explicacoes BackOffice e Gestao",
+    page_title="RAG Interativo-BackOffice e Gestao",
     page_icon="📚",
     layout="wide",
     initial_sidebar_state="collapsed"
