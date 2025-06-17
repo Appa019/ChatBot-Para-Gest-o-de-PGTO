@@ -389,14 +389,10 @@ def main():
                 try:
                     response = st.session_state.query_engine.query(pergunta)
                     
-                    # Adicionar ao histórico
                     st.session_state.chat_history.append({
                         "pergunta": pergunta,
                         "resposta": response.response
                     })
-                    
-                    # Limpar campo de pergunta
-                    st.session_state.pergunta_input = ""
                     
                 except Exception as e:
                     st.error(f"Erro ao processar pergunta: {e}")
