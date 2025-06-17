@@ -7,3 +7,4 @@ python-docx
 python-pptx
 torch
 transformers
+docx2txt
