@@ -214,10 +214,14 @@ def criar_indice(documentos):
                 node_parser=node_parser
             )
             
+
             query_engine = index.as_query_engine(
-                similarity_top_k=6,
-                response_mode="tree_summarize",
-                verbose=False
+                similarity_top_k=20,                    # Mais documentos consultados
+                response_mode="tree_summarize",         # Mantém o modo
+                verbose=False,
+                streaming=False,
+                max_tokens=5000,                        # Limite maior de resposta
+                temperature=0.4
             )
             
             return query_engine
