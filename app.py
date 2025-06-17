@@ -231,44 +231,35 @@ def modal_api_key():
         st.session_state.api_key_configured = False
     
     if not st.session_state.api_key_configured:
-        st.markdown("""
-        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
-                    background: rgba(0,0,0,0.5); z-index: 999; display: flex; 
-                    align-items: center; justify-content: center;">
-            <div style="background: white; padding: 2rem; border-radius: 10px; 
-                        max-width: 500px; width: 90%;">
-                <h3 style="text-align: center; margin-bottom: 1rem;">🔑 Configuração Inicial</h3>
-                <p style="text-align: center; color: #666;">
-                    Para usar o sistema, insira sua OpenAI API Key:
-                </p>
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
+        # Remover o CSS do modal overlay que está causando problema
+        st.markdown("### 🔑 Configuração Inicial")
+        st.info("Para usar o sistema, insira sua OpenAI API Key:")
         
-        # Container centralizado para o input
-        col1, col2, col3 = st.columns([1, 2, 1])
-        with col2:
-            api_key = st.text_input(
-                "OpenAI API Key", 
-                type="password", 
-                placeholder="sk-...",
-                key="api_key_input"
-            )
-            
-            if st.button("Configurar Sistema", key="config_button"):
-                if api_key and api_key.startswith("sk-"):
-                    os.environ["OPENAI_API_KEY"] = api_key
-                    if configurar_sistema():
-                        st.session_state.api_key_configured = True
-                        st.rerun()
-                    else:
-                        st.error("Erro na configuração. Verifique sua API Key.")
+        # Campo de input direto (sem colunas que podem causar problema)
+        api_key = st.text_input(
+            "OpenAI API Key", 
+            type="password", 
+            placeholder="sk-...",
+            key="api_key_input",
+            help="Sua API Key da OpenAI (começa com sk-)"
+        )
+        
+        if st.button("🚀 Configurar Sistema", key="config_button", use_container_width=True):
+            if api_key and api_key.startswith("sk-"):
+                os.environ["OPENAI_API_KEY"] = api_key
+                if configurar_sistema():
+                    st.session_state.api_key_configured = True
+                    st.success("✅ Sistema configurado com sucesso!")
+                    st.rerun()
                 else:
-                    st.error("Por favor, insira uma API Key válida (deve começar com 'sk-')")
+                    st.error("❌ Erro na configuração. Verifique sua API Key.")
+            else:
+                st.error("❌ Por favor, insira uma API Key válida (deve começar com 'sk-')")
         
         return False
     
     return True
+
 
 def main():
     """Função principal da aplicação"""
