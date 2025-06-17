@@ -1,0 +1,30 @@
+# Core dependencies
+streamlit
+openai
+
+# LlamaIndex dependencies
+llama-index
+llama-index-embeddings-huggingface
+llama-index-llms-openai
+
+# Document processing
+pypdf
+python-docx
+python-pptx
+docx2txt
+pptx2txt
+
+# ML and embeddings
+sentence-transformers
+torch
+transformers
+
+# Image processing (for PPTX)
+Pillow
+
+# Unstructured document processing
+unstructured[docx,pptx]
+
+# Additional utilities
+pathlib2
+
