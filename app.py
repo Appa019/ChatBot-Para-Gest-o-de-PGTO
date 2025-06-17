@@ -275,8 +275,8 @@ def main():
     # Header principal
     st.markdown("""
     <div class="main-header">
-        <h1>📚 RAG Interativo</h1>
-        <p>Análise Inteligente de Documentos</p>
+        <h1>📚 RAG Interativo-Explicacoes BackOffice e Gestao</h1>
+        <p>ChatBot</p>
     </div>
     """, unsafe_allow_html=True)
     
