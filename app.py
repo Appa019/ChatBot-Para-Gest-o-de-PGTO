@@ -204,8 +204,8 @@ def criar_indice(documentos):
     try:
         with st.spinner("Criando índice vetorial..."):
             node_parser = SentenceSplitter(
-                chunk_size=1024, 
-                chunk_overlap=128,
+                chunk_size=2048, 
+                chunk_overlap=256,
                 paragraph_separator="\n\n"
             )
             
@@ -216,11 +216,11 @@ def criar_indice(documentos):
             
 
             query_engine = index.as_query_engine(
-                similarity_top_k=20,                    # Mais documentos consultados
-                response_mode="tree_summarize",         # Mantém o modo
+                similarity_top_k=30,                    # Mais documentos consultados
+                response_mode="compact",         # Mantém o modo
                 verbose=False,
                 streaming=False,
-                max_tokens=5000,                        # Limite maior de resposta
+                max_tokens=8000,                        # Limite maior de resposta
                 temperature=0.4
             )
             
