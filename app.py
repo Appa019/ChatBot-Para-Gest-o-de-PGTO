@@ -193,7 +193,7 @@ def configurar_sistema():
             embed_model = HuggingFaceEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2")
             Settings.embed_model = embed_model
         
-        Settings.llm = OpenAI(model="gpt-3.5-turbo", temperature=0.4)
+        Settings.llm = OpenAI(model="gpt-3.5-turbo", temperature=0.5)
         return True
     except Exception as e:
         st.error(f"Erro na configuração: {e}")
@@ -204,8 +204,8 @@ def criar_indice(documentos):
     try:
         with st.spinner("Criando índice vetorial..."):
             node_parser = SentenceSplitter(
-                chunk_size=2048, 
-                chunk_overlap=256,
+                chunk_size=3000, 
+                chunk_overlap=600,
                 paragraph_separator="\n\n"
             )
             
@@ -216,12 +216,12 @@ def criar_indice(documentos):
             
 
             query_engine = index.as_query_engine(
-                similarity_top_k=30,                    # Mais documentos consultados
-                response_mode="compact",         # Mantém o modo
-                verbose=False,
+                similarity_top_k=40,             # Mais documentos consultados
+                response_mode="tree_summarize",         # Mantém o modo
+                verbose=True,
                 streaming=False,
-                max_tokens=8000,                        # Limite maior de resposta
-                temperature=0.4
+                max_tokens=12000,                        # Limite maior de resposta
+                temperature=0.5
             )
             
             return query_engine
