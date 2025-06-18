@@ -193,7 +193,7 @@ def configurar_sistema():
             embed_model = HuggingFaceEmbedding(model_name="sentence-transformers/all-MiniLM-L6-v2")
             Settings.embed_model = embed_model
         
-        Settings.llm = OpenAI(model="gpt-4.0", temperature=0.4)
+        Settings.llm = OpenAI(model="gpt-4", temperature=0.4)
         return True
     except Exception as e:
         st.error(f"Erro na configuração: {e}")
